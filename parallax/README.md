@@ -3,6 +3,10 @@
 
 ### Usage
 
+```html
+<div class="parallax" data-parallax-speed="15"></div>
 ```
-observe('.seletor', threshold, boxParallax);
+
+```javascript
+observe('.parallax', threshold, boxParallax);
 ```

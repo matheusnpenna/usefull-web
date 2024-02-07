@@ -27,7 +27,7 @@ function observe(selector, threshold, callback) {
  * @return {String} The CSS translateY value.
  */
 function translateY(ratio, total) {
-  return `translateY(calc(-${ratio} * ${total})`;
+  return `translateY(calc(-${ratio} * ${total * 1.4}%)`;
 }
 
 /**
@@ -41,7 +41,8 @@ function translateY(ratio, total) {
 function boxParallax(entries, observer) {
   for (const entry of entries) {
     if (entry.isIntersecting) {
-      entry.target.style.transform = translateY(entry.intersectionRatio, '15%');
+      var speed = entry.target.getAttribute("data-parallax-speed") || "15";
+      entry.target.style.transform = translateY(entry.intersectionRatio, speed);
     }
   }
 }
@@ -61,4 +62,4 @@ function createThreshold() {
 }
 
 const threshold = createThreshold();
-observe('.rellax', threshold, boxParallax);
+observe('.parallax', threshold, boxParallax);
